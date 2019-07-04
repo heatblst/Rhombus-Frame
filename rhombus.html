@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+ text-align:center;
+ background:#ccffff;
+}
+#canvas{
+  width: 319px;
+  height: 318px;
+  margin-top:14.5%;
+}
+
+input[type="file"]{
+  color:white;
+  background:#00FF7F;
+  border-radius:10%;
+  border: 2px solid white;
+  padding:10px;
+  margin-top:5px;
+  margin-right:5px;
+  width:50%;
+}
+#img{
+    background-image: url('frame.jpg');
+    height: 450px;
+    width: 450px;
+    max-width: 1920px;
+    background-size:cover;
+    margin:auto;
+    margin-bottom:5%;
+    -ms-transform: rotate(45deg); 
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+}
+
+#main_content{
+    text-align:center;
+    display: block;
+    margin-top:30%;
+}
+</style>
+</head>
+<body>
+<input type="file" id="inp"/>
+ <div id="img">
+        <div id="main_content">
+         <canvas id="canvas" >
+        </div>
+ </div>
+ 
+ <script>
+   document.getElementById('inp').onchange = function(e) {
+   var img = new Image();
+   img.onload = draw;
+   img.onerror = failed;
+   img.src = URL.createObjectURL(this.files[0]);
+  };
+  function draw() {
+   var canvas = document.getElementById('canvas');
+   canvas.width = this.width;
+   canvas.height = this.height;
+   var ctx = canvas.getContext('2d');
+   ctx.drawImage(this,0,0);
+   this.revert(false);
+  }
+  function failed() {
+    console.error("The provided file couldn't be loaded as an Image media");
+  }
+
+ </script>
+ </body>
+</html>
