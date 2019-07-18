@@ -4,11 +4,13 @@
 <style>
 body{
  text-align:center;
- background:#ccffff;
 }
 #canvas{
-  width: 319px;
-  height: 318px;
+  height: 450px;
+  width:450px;
+  object-fit: cover;
+  clip-path: polygon(50% 0%, 97% 47%, 50% 94%, 3% 47%);
+  border:solid 1px red;
   margin-top:14.5%;
 }
 
@@ -23,34 +25,22 @@ input[type="file"]{
   width:50%;
 }
 #img{
-    background-image: url('frame.jpg');
-    height: 450px;
-    width: 450px;
-    max-width: 1920px;
+    background: url(frame2.jpg) no-repeat center ;
+    height: 600px;
+    width: 600px;
     background-size:cover;
     margin:auto;
-    margin-bottom:5%;
-    -ms-transform: rotate(45deg); 
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-
+    margin-top:5%;
 }
 
-#main_content{
-    text-align:center;
-    display: block;
-    margin-top:30%;
-}
 </style>
 </head>
 <body>
 <input type="file" id="inp"/>
- <div id="img">
-        <div id="main_content">
-         <canvas id="canvas" >
-        </div>
- </div>
- 
+ <div id="img" >
+        <canvas id="canvas" >
+      </div>
+         
  <script>
    document.getElementById('inp').onchange = function(e) {
    var img = new Image();
